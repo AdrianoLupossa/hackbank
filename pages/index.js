@@ -3,7 +3,6 @@ import Image from "next/image";
 
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import Container from "react-bootstrap/Container";
 
 import Footer from "../components/Footer";
 
@@ -21,12 +20,12 @@ export default function Home() {
 
       <Header />
 
-      <Container style={{ height: "100vh" }}>
+      <div style={{ height: "100vh" }} className="d-flex">
         <Sidebar />
-        <main>
+        <main className="p-3">
           <h1>Hackbank</h1>
         </main>
-      </Container>
+      </div>
 
       <Footer />
     </div>
