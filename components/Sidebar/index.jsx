@@ -1,7 +1,14 @@
 import Link from "next/link";
-import Nav from "react-bootstrap/Nav";
-import NavLink from "react-bootstrap/NavLink";
+
 import styled from "styled-components";
+
+import { MdHome } from "react-icons/md";
+import { FaUser } from "react-icons/fa";
+import { RiExchangeLine } from "react-icons/ri";
+import { GiPayMoney } from "react-icons/gi";
+import { AiOutlineLogout } from "react-icons/ai";
+
+import Nav from "react-bootstrap/Nav";
 
 const StyledSidebar = styled.aside`
   height: 100vh;
@@ -18,8 +25,9 @@ const MenuItem = styled.a`
   cursor: pointer;
   padding: 0.5rem;
   transition: all 0.3s ease-in-out;
-  border-bottom: transparent 5px solid;
-  width: 200px;
+  border-bottom: transparent 3px solid;
+  width: 180px;
+  gap: 0.5rem;
 
   &:active {
     /* background-color: #100747; */
@@ -35,21 +43,35 @@ const MenuItem = styled.a`
 
 export default function Sidebar() {
   return (
-    <StyledSidebar className="bg-light">
+    <StyledSidebar className="bg-light d-flex flex-column justify-content-between">
       <Nav className="d-flex flex-column p-2" style={{ gap: "1rem" }}>
         <Link href="/">
-          <MenuItem className="text-decoration-none active">Inicio</MenuItem>
+          <MenuItem className="text-decoration-none active d-flex align-items-center">
+            <MdHome size="1.5rem" /> Inicio
+          </MenuItem>
         </Link>
         <Link href="/customers">
-          <MenuItem className="text-decoration-none">Clientes</MenuItem>
+          <MenuItem className="text-decoration-none d-flex align-items-center">
+            <FaUser size="1.3rem" /> Clientes
+          </MenuItem>
         </Link>
         <Link href="/transactions">
-          <MenuItem className="text-decoration-none">Transações</MenuItem>
+          <MenuItem className="text-decoration-none d-flex align-items-center">
+            <RiExchangeLine size="1.5rem" /> Transações
+          </MenuItem>
         </Link>
         <Link href="/credit">
-          <MenuItem className="text-decoration-none">Crédito</MenuItem>
+          <MenuItem className="text-decoration-none d-flex align-items-center">
+            <GiPayMoney size="1.5rem" /> Crédito
+          </MenuItem>
         </Link>
       </Nav>
+
+      <Link href="/logout">
+        <MenuItem className="text-decoration-none d-flex align-items-center">
+          <AiOutlineLogout size="1.5rem" /> Sair
+        </MenuItem>
+      </Link>
     </StyledSidebar>
   );
 }
