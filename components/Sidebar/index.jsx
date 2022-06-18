@@ -79,7 +79,7 @@ export default function Sidebar({ active }) {
         <Link href="/credit">
           <MenuItem
             className={`text-decoration-none ${
-              active === 2 ? "active" : ""
+              active === 3 ? "active" : ""
             } d-flex align-items-center`}
           >
             <GiPayMoney size="1.5rem" /> Crédito
@@ -90,7 +90,7 @@ export default function Sidebar({ active }) {
       <Link href="/logout">
         <MenuItem
           className={`text-decoration-none ${
-            active === 3 ? "active" : ""
+            active === 4 ? "active" : ""
           } d-flex align-items-center`}
         >
           <AiOutlineLogout size="1.5rem" /> Sair
