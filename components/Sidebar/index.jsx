@@ -11,10 +11,11 @@ import { AiOutlineLogout } from "react-icons/ai";
 import Nav from "react-bootstrap/Nav";
 
 const StyledSidebar = styled.aside`
-  height: 100vh;
   width: 20%;
+  height: 100vh;
   @media (max-width: 768px) {
-    width: 60%;
+    width: 100%;
+    height: auto;
   }
 `;
 
@@ -43,8 +44,9 @@ const MenuItem = styled.a`
 
 export default function Sidebar() {
   return (
-    <StyledSidebar className="bg-light flex-column justify-content-between d-none d-md-flex">
-      <Nav className="d-flex flex-column p-2" style={{ gap: "1rem" }}>
+    // d-none d-md-flex
+    <StyledSidebar className="d-flex bg-light flex-column justify-content-between">
+      <Nav className="d-flex flex-row flex-sm-column flex-sm-nowrap p-2 justify-content-between justify-content-sm-start">
         <Link href="/">
           <MenuItem className="text-decoration-none active d-flex align-items-center">
             <MdHome size="1.5rem" /> Inicio

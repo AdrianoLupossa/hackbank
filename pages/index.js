@@ -37,6 +37,13 @@ const StyledCard = styled(Card)`
   display: flex;
 `;
 
+const Container = styled.div`
+  height: 100vh;
+  @media (max-width: 768px) {
+    height: auto;
+  }
+`;
+
 export default function Home() {
   return (
     <div>
@@ -51,7 +58,7 @@ export default function Home() {
 
       <Header />
 
-      <div style={{ height: "100vh" }} className="d-flex">
+      <Container className="d-flex flex-column flex-sm-row">
         <Sidebar />
         <main className="p-3">
           <Row xs={1} md={3} sm={2} className="g-4">
@@ -83,7 +90,7 @@ export default function Home() {
             ))}
           </Row>
         </main>
-      </div>
+      </Container>
 
       <Footer />
     </div>
