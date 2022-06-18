@@ -17,7 +17,7 @@ export default function Login() {
         <h1 className="d-block text-center">Criar uma nova conta</h1>
         <Box className="m-auto mt-5">
           <Form>
-            <h2 style={{ fontSize: "1em" }}>
+            <h2 style={{ fontSize: "1em" }} className="mb-4">
               Preencha os campos abaixo para criar uma nova conta.
             </h2>
             <Form.Group className="mb-3" controlId="formBasicName">

@@ -17,7 +17,7 @@ export default function Login() {
         <h1 className="d-block text-center">Login</h1>
         <Box className="m-auto mt-5">
           <Form>
-            <h2 style={{ fontSize: "1em" }}>
+            <h2 style={{ fontSize: "1em" }} className="mb-4">
               Introduza os seus dados para iniciar sessão. Caso ainda não tenha
               uma conta, clica em criar uma conta.
             </h2>
