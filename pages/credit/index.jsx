@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useState } from "react";
 
 import styled from "styled-components";
 
@@ -22,6 +23,8 @@ export const Box = styled.div`
 `;
 
 export default function Clientes() {
+  const [disabled, setDisabled] = useState(false);
+
   return (
     <div>
       <Head>

@@ -9,6 +9,7 @@ import { Box } from "../credit";
 
 export default function Login() {
   const [accountCreation, setAccountCreation] = useState(true);
+  const [disabled, setDisabled] = useState(false);
 
   return (
     <>
