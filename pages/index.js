@@ -56,7 +56,10 @@ export default function Home() {
         <main className="p-3">
           <Row xs={1} md={3} sm={2} className="g-4">
             {cards.map((card, key) => (
-              <Col key={key} className="d-flex align-items-stretch">
+              <Col
+                key={key}
+                className="d-flex align-items-stretch justify-content-center justify-content-sm-start"
+              >
                 <StyledCard>
                   <Card.Img
                     variant="top"
