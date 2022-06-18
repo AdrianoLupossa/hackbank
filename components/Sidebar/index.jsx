@@ -12,28 +12,31 @@ const StyledSidebar = styled.aside`
 `;
 
 const MenuItem = styled.a`
+  color: #000;
   text-decoration: none;
   font-size: 1.2em;
   cursor: pointer;
   padding: 0.5rem;
   transition: all 0.3s ease-in-out;
-  border-radius: 5px;
+  border-bottom: transparent 5px solid;
+  width: 200px;
 
   &:active {
-    background-color: #100747;
+    /* background-color: #100747; */
+    border-color: #100747;
   }
 
   &:hover,
   &.active {
-    background-color: #0f125f;
-    color: #fff;
+    color: #0f125f;
+    border-color: #0f125f;
   }
 `;
 
 export default function Sidebar() {
   return (
     <StyledSidebar className="bg-light">
-      <Nav className="d-flex flex-column" style={{ gap: "1rem" }}>
+      <Nav className="d-flex flex-column p-2" style={{ gap: "1rem" }}>
         <Link href="/">
           <MenuItem className="text-decoration-none active">Inicio</MenuItem>
         </Link>
@@ -42,6 +45,9 @@ export default function Sidebar() {
         </Link>
         <Link href="/">
           <MenuItem className="text-decoration-none">Transações</MenuItem>
+        </Link>
+        <Link href="/">
+          <MenuItem className="text-decoration-none">Crédito</MenuItem>
         </Link>
       </Nav>
     </StyledSidebar>
