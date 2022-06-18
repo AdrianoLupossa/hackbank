@@ -38,10 +38,8 @@ export default function Clientes() {
               <Form.Select style={{ width: "300px" }}>
                 <option value="most-recent">Mais recente</option>
                 <option value="most-old">Mais antiga</option>
-                <option value="salary-advance">Maior valor</option>
-                <option value="credit-card">Menor valor</option>
-                <option value="high-credit-card">Crédito</option>
-                <option value="low-credit-card">Débito</option>
+                <option value="most-value">Maior valor</option>
+                <option value="less-value">Menor valor</option>
               </Form.Select>
             </div>
 
@@ -52,8 +50,8 @@ export default function Clientes() {
               <span>Tipo de transação:</span>
               <Form.Select style={{ width: "300px" }}>
                 <option value="all">Todas</option>
-                <option value="most-recent">Débito</option>
-                <option value="most-old">Crédito</option>
+                <option value="debit">Débito</option>
+                <option value="credit">Crédito</option>
               </Form.Select>
             </div>
           </Filter>

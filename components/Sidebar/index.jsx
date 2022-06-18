@@ -44,10 +44,13 @@ const MenuItem = styled.a`
   }
 `;
 
-export default function Sidebar({ active }) {
+export default function Sidebar({ active, style }) {
   return (
     // d-none d-md-flex
-    <StyledSidebar className="d-flex bg-light flex-column justify-content-between">
+    <StyledSidebar
+      style={style}
+      className="d-flex bg-light flex-column justify-content-between"
+    >
       <Nav className="d-flex flex-row flex-sm-column flex-sm-nowrap justify-content-between justify-content-sm-start">
         <Link href="/">
           <MenuItem
