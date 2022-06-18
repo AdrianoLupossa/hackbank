@@ -40,13 +40,13 @@ export default function Sidebar() {
         <Link href="/">
           <MenuItem className="text-decoration-none active">Inicio</MenuItem>
         </Link>
-        <Link href="/">
+        <Link href="/customers">
           <MenuItem className="text-decoration-none">Clientes</MenuItem>
         </Link>
-        <Link href="/">
+        <Link href="/transactions">
           <MenuItem className="text-decoration-none">Transações</MenuItem>
         </Link>
-        <Link href="/">
+        <Link href="/credit">
           <MenuItem className="text-decoration-none">Crédito</MenuItem>
         </Link>
       </Nav>
