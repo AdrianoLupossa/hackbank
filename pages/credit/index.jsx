@@ -14,7 +14,7 @@ import formatter from "../../modules/formatPrice";
 import { Container } from "../index";
 
 export const Box = styled.div`
-  width: 500px;
+  max-width: 500px;
   padding: 3rem;
   border: 1px solid #ddd;
   box-shadow: 1px 2px 3px #ddd;
