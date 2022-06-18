@@ -43,7 +43,7 @@ const MenuItem = styled.a`
 
 export default function Sidebar() {
   return (
-    <StyledSidebar className="bg-light d-flex flex-column justify-content-between">
+    <StyledSidebar className="bg-light flex-column justify-content-between d-none d-md-flex">
       <Nav className="d-flex flex-column p-2" style={{ gap: "1rem" }}>
         <Link href="/">
           <MenuItem className="text-decoration-none active d-flex align-items-center">
