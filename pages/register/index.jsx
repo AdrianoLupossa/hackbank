@@ -14,13 +14,17 @@ export default function Login() {
     <>
       <Header />
       <div className="p-3 p-sm-5">
-        <h1 className="d-block text-center">Login</h1>
+        <h1 className="d-block text-center">Criar uma nova conta</h1>
         <Box className="m-auto mt-5">
           <Form>
             <h2 style={{ fontSize: "1em" }}>
-              Introduza os seus dados para iniciar sessão. Caso ainda não tenha
-              uma conta, clica em criar uma conta.
+              Preencha os campos abaixo para criar uma nova conta.
             </h2>
+            <Form.Group className="mb-3" controlId="formBasicName">
+              <Form.Label>Nome completo</Form.Label>
+              <Form.Control type="text" placeholder="Seu nome" required />
+            </Form.Group>
+
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Endereço de e-mail</Form.Label>
               <Form.Control
@@ -44,23 +48,30 @@ export default function Login() {
                 letras maiusculas, minusculas e números.
               </Form.Text>
             </Form.Group>
-            <Form.Group className="mb-3" controlId="formBasicCheckbox">
-              <Form.Check
-                type="checkbox"
-                label="Manter-me conectado/a"
-                defaultChecked
+
+            <Form.Group className="mb-3" controlId="formBasicPassword">
+              <Form.Label>Confirmar Palavra-passe</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Repita a palavra-passe"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                minLength={8}
+                required
               />
             </Form.Group>
-            <Button variant="primary" type="submit">
-              Inciar sessão
+
+            <Button variant="success" type="submit">
+              Criar nova conta
             </Button>
 
             {accountCreation && (
               <div className="create-account-suggestion">
-                <span className="d-block text-center my-3">Ou</span>
-                <Link href="/register">
+                <span className="d-block text-center my-3">
+                  Ou caso já possua uma conta
+                </span>
+                <Link href="/login">
                   <Button variant="link" className="w-100 text-center">
-                    Criar uma conta padrão para acessar
+                    Iniciar a sessão
                   </Button>
                 </Link>
               </div>
