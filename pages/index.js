@@ -1,6 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
+
 import Header from "../components/Header";
+import Sidebar from "../components/Sidebar";
+import Container from "react-bootstrap/Container";
+
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -16,22 +21,14 @@ export default function Home() {
 
       <Header />
 
-      <main>
-        <h1>Hackbank</h1>
-      </main>
+      <Container style={{ height: "100vh" }}>
+        <Sidebar />
+        <main>
+          <h1>Hackbank</h1>
+        </main>
+      </Container>
 
-      <footer>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{" "}
-          <span>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+      <Footer />
     </div>
   );
 }
