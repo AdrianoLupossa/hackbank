@@ -4,20 +4,26 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 class MyDocument extends Document {
-  static getInitialProps({ renderPage }) {
-    // Step 1: Create an instance of ServerStyleSheet
-    const sheet = new ServerStyleSheet();
+  static async getInitialProps(ctx) {
+    const sheet = new ServerStyleSheet(); //styled-components
+    // const sheets = new ServerStyleSheets();
+    const originalRenderPage = ctx.renderPage;
 
-    // Step 2: Retrieve styles from components in the page
-    const page = renderPage(
-      (App) => (props) => sheet.collectStyles(<App {...props} />)
-    );
+    ctx.renderPage = () =>
+      originalRenderPage({
+        enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+      });
 
-    // Step 3: Extract the styles as <style> tags
-    const styleTags = sheet.getStyleElement();
+    const initialProps = await Document.getInitialProps(ctx);
 
-    // Step 4: Pass styleTags as a prop
-    return { ...page, styleTags };
+    return {
+      ...initialProps,
+      // Styles fragment is rendered after the app and page rendering finish.
+      styles: [
+        ...React.Children.toArray(initialProps.styles),
+        sheet.getStyleElement(),
+      ],
+    };
   }
 
   render() {
