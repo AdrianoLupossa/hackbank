@@ -15,17 +15,17 @@ import formatter from "../modules/formatPrice";
 
 const cards = [
   {
-    title: "Clientes",
-    content: 10,
+    title: "Clientes registados",
+    content: 8900,
     icon: "/assets/user.png",
   },
   {
-    title: "Nº de Transações",
-    content: 10,
+    title: "Nº de transações",
+    content: 3800,
     icon: "/assets/transaction.png",
   },
   {
-    title: "Total de Crédito concedido",
+    title: "Total de crédito concedido",
     credit: 100000000,
     icon: "/assets/money.png",
   },
@@ -37,7 +37,7 @@ const StyledCard = styled(Card)`
   display: flex;
 `;
 
-const Container = styled.div`
+export const Container = styled.div`
   height: 100vh;
   @media (max-width: 768px) {
     height: auto;
@@ -59,7 +59,7 @@ export default function Home() {
       <Header />
 
       <Container className="d-flex flex-column flex-sm-row">
-        <Sidebar />
+        <Sidebar active={0} />
         <main className="p-3">
           <Row xs={1} md={3} sm={2} className="g-4">
             {cards.map((card, key) => (

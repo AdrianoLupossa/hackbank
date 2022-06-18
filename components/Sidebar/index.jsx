@@ -26,54 +26,80 @@ const MenuItem = styled.a`
   cursor: pointer;
   padding: 0.5rem;
   transition: all 0.3s ease-in-out;
-  border-bottom: transparent 3px solid;
-  width: 180px;
+  border-left: transparent 5px solid;
+  /* width: 180px; */
   gap: 0.5rem;
 
   &:active {
     /* background-color: #100747; */
-    border-color: #100747;
+    /* 0f125f */
+    border-left-color: #100747;
   }
 
   &:hover,
   &.active {
-    color: #0f125f;
-    border-color: #0f125f;
+    color: #fff;
+    background-color: #100747;
+    border-left-color: #0f125f;
   }
 `;
 
-export default function Sidebar() {
+export default function Sidebar({ active }) {
   return (
     // d-none d-md-flex
     <StyledSidebar className="d-flex bg-light flex-column justify-content-between">
-      <Nav className="d-flex flex-row flex-sm-column flex-sm-nowrap p-2 justify-content-between justify-content-sm-start">
+      <Nav className="d-flex flex-row flex-sm-column flex-sm-nowrap justify-content-between justify-content-sm-start">
         <Link href="/">
-          <MenuItem className="text-decoration-none active d-flex align-items-center">
+          <MenuItem
+            className={`text-decoration-none ${
+              active === 0 ? "active" : ""
+            } d-flex align-items-center`}
+          >
             <MdHome size="1.5rem" /> Inicio
           </MenuItem>
         </Link>
         <Link href="/customers">
-          <MenuItem className="text-decoration-none d-flex align-items-center">
+          <MenuItem
+            className={`text-decoration-none ${
+              active === 1 ? "active" : ""
+            } d-flex align-items-center`}
+          >
             <FaUser size="1.3rem" /> Clientes
           </MenuItem>
         </Link>
         <Link href="/transactions">
-          <MenuItem className="text-decoration-none d-flex align-items-center">
+          <MenuItem
+            className={`text-decoration-none ${
+              active === 2 ? "active" : ""
+            } d-flex align-items-center`}
+          >
             <RiExchangeLine size="1.5rem" /> Transações
           </MenuItem>
         </Link>
         <Link href="/credit">
-          <MenuItem className="text-decoration-none d-flex align-items-center">
+          <MenuItem
+            className={`text-decoration-none ${
+              active === 2 ? "active" : ""
+            } d-flex align-items-center`}
+          >
             <GiPayMoney size="1.5rem" /> Crédito
           </MenuItem>
         </Link>
       </Nav>
 
       <Link href="/logout">
-        <MenuItem className="text-decoration-none d-flex align-items-center">
+        <MenuItem
+          className={`text-decoration-none ${
+            active === 3 ? "active" : ""
+          } d-flex align-items-center`}
+        >
           <AiOutlineLogout size="1.5rem" /> Sair
         </MenuItem>
       </Link>
     </StyledSidebar>
   );
 }
+
+Sidebar.defaultProps = {
+  active: 0,
+};
