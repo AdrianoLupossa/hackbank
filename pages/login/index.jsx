@@ -18,8 +18,8 @@ export default function Login() {
         <Box className="m-auto mt-5">
           <Form>
             <h2 style={{ fontSize: "1em" }} className="mb-4">
-              Introduza os seus dados para iniciar sessão. Caso ainda não tenha
-              uma conta, clica em criar uma conta.
+              Introduza os seus dados para iniciar sessão. <br />
+              Caso ainda não tenha uma conta, clica em criar uma conta.
             </h2>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Endereço de e-mail</Form.Label>

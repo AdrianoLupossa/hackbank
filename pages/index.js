@@ -53,7 +53,6 @@ export default function Home() {
           name="description"
           content="O hackbank gerencia o acesso ao crédito para os clientes do banco."
         />
-        <link rel="icon" href="/favicon.png" />
       </Head>
 
       <Header />
