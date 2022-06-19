@@ -25,11 +25,6 @@ const cards = [
     content: 3800,
     icon: "/assets/transaction.png",
   },
-  {
-    title: "Total de crédito concedido",
-    credit: 100000000,
-    icon: "/assets/money.png",
-  },
 ];
 
 const StyledCard = styled(Card)`
@@ -45,21 +40,19 @@ export const Container = styled.div`
   }
 `;
 
-export default function Home() {
-  const [cardData, setCardData] = useState({});
-
-  useEffect(() => {
-    async function getData() {
-      const response = await fetch(
-        "https://25c2-129-122-186-206.ngrok.io/api/clients"
-      );
-      const customers = await response.json();
-
-      console.log(customers);
-    }
-
-    getData();
-  }, []);
+export default function Home({ customers, transactions }) {
+  const [cardData, setCardData] = useState([
+    {
+      title: "Clientes registados",
+      content: customers,
+      icon: "/assets/user.png",
+    },
+    {
+      title: "Nº de transações",
+      content: transactions,
+      icon: "/assets/transaction.png",
+    },
+  ]);
 
   return (
     <div>
@@ -77,7 +70,7 @@ export default function Home() {
         <Sidebar active={0} />
         <main className="p-3">
           <Row xs={1} md={3} sm={2} className="g-4">
-            {cards.map((card, key) => (
+            {cardData.map((card, key) => (
               <Col
                 key={key}
                 className="d-flex align-items-stretch justify-content-center justify-content-sm-start"
@@ -110,4 +103,29 @@ export default function Home() {
       <Footer />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  try {
+    const request = await fetch(
+      "https://20f0-129-122-186-206.ngrok.io/api/clients"
+    );
+
+    const response = await request.json();
+    return {
+      props: {
+        customers: response.data.length,
+        transactions: 269657,
+      },
+      revalidate: 3600 * 1000,
+    };
+  } catch (err) {
+    console.log("Something went wrong: ", err);
+
+    return {
+      props: {
+        customers: [],
+      },
+    };
+  }
 }

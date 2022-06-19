@@ -25,7 +25,7 @@ export default function Header() {
             <Navbar.Text>
               Logado como:{" "}
               <a style={{ textDecoration: "none" }} href="#login">
-                @administrador
+                @adrianolupossa
               </a>
             </Navbar.Text>
           </Navbar.Collapse>

@@ -43,7 +43,7 @@ export default function Clientes({ customers }) {
         style={{ height: "auto" }}
         className="d-flex flex-column flex-sm-row"
       >
-        <Sidebar active={1} />
+        <Sidebar style={{ height: "auto" }} active={1} />
         <main className="p-3" style={{ width: "80%" }}>
           <h1>Clientes registados</h1>
           <Filter className="d-flex justify-content-end my-2">
@@ -106,9 +106,10 @@ export default function Clientes({ customers }) {
                 .map((customer, index) => {
                   return (
                     <tr key={index}>
+                      <td>{++index}</td>
                       <td>{customer.customerid}</td>
                       <td>{customer.surname}</td>
-                      <td>{customer.creditScore}</td>
+                      <td>{customer.creditscore}</td>
                       <td>{customer.geography}</td>
                       <td>{customer.gender}</td>
                       <td>{customer.dateofbirth}</td>
@@ -117,7 +118,7 @@ export default function Clientes({ customers }) {
                       <td>{customer.creditcardaccountnumber}</td>
                       <td>{customer.balance}</td>
                       <td>{customer.balancedate}</td>
-                      <td>{customer.estimatedsalary}</td>
+                      <td>{customer.estimetedsalary}</td>
                       <td>{customer.currentbalance}</td>
                     </tr>
                   );
@@ -132,16 +133,25 @@ export default function Clientes({ customers }) {
 }
 
 export async function getStaticProps() {
-  const request = await fetch(
-    "https://20f0-129-122-186-206.ngrok.io/api/clients"
-  );
+  try {
+    const request = await fetch(
+      "https://20f0-129-122-186-206.ngrok.io/api/clients"
+    );
 
-  const response = await request.json();
+    const response = await request.json();
+    return {
+      props: {
+        customers: response.data,
+      },
+      revalidate: 3600 * 1000,
+    };
+  } catch (err) {
+    console.log("Something went wrong: ", err);
 
-  return {
-    props: {
-      customers: response.data,
-    },
-    revalidate: 3600 * 1000,
-  };
+    return {
+      props: {
+        customers: [],
+      },
+    };
+  }
 }
