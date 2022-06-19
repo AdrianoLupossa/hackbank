@@ -79,7 +79,7 @@ export default function Sidebar({ active, style }) {
             <RiExchangeLine size="1.5rem" /> Transações
           </MenuItem>
         </Link>
-        {/* <Link href="/credit">
+        <Link href="/credit">
           <MenuItem
             className={`text-decoration-none ${
               active === 3 ? "active" : ""
@@ -87,7 +87,7 @@ export default function Sidebar({ active, style }) {
           >
             <GiPayMoney size="1.5rem" /> Crédito
           </MenuItem>
-        </Link> */}
+        </Link>
       </Nav>
 
       <Link href="/login">

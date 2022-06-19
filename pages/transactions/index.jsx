@@ -68,7 +68,7 @@ export default function Clientes() {
               </Form.Select>
             </div>
 
-            <div
+            {/* <div
               className="d-flex align-items-center"
               style={{ gap: "0.5rem" }}
             >
@@ -78,7 +78,7 @@ export default function Clientes() {
                 <option value="debit">Débito</option>
                 <option value="credit">Crédito</option>
               </Form.Select>
-            </div>
+            </div> */}
           </Filter>
           <div className="my-4 d-flex">
             <form onSubmit={handleSubmitSearch}>
