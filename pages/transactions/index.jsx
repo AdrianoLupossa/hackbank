@@ -27,7 +27,7 @@ export default function Clientes() {
     e.preventDefault();
 
     const request = await fetch(
-      `https://20f0-129-122-186-206.ngrok.io/api/clients/${Number(search)}`,
+      `https://ab90-129-122-186-206.ngrok.io/api/clients/${Number(search)}`,
       {
         method: "GET",
       }

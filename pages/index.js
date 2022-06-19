@@ -108,7 +108,7 @@ export default function Home({ customers, transactions }) {
 export async function getStaticProps() {
   try {
     const request = await fetch(
-      "https://20f0-129-122-186-206.ngrok.io/api/clients"
+      "https://ab90-129-122-186-206.ngrok.io/api/clients"
     );
 
     const response = await request.json();

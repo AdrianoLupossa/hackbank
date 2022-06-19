@@ -55,18 +55,17 @@ export default function Login() {
       const headers = {
         "Content-Type": "application/json",
         mode: "no-cors",
-        "Access-Control-Allow-Origin": "*",
       };
 
       axios
         .post(
-          "https://20f0-129-122-186-206.ngrok.io/api/register",
+          "https://ab90-129-122-186-206.ngrok.io/api/register",
           {
             name: values.username,
             email: values.email,
             password: values.password,
           },
-          { headers }
+          headers
         )
         .then(function (response) {
           console.log(response);
