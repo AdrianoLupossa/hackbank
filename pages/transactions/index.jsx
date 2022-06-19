@@ -53,7 +53,7 @@ export default function Clientes() {
       >
         <Sidebar style={{ height: "auto" }} active={2} />
         <main className="p-3" style={{ width: "80%" }}>
-          <h1>Transação efectuadas</h1>
+          <h1>Transações efectuadas</h1>
           <Filter className="d-flex justify-content-between mb-2 mt-4">
             <div
               className="d-flex align-items-center"
