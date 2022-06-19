@@ -41,7 +41,7 @@ export const Container = styled.div`
 `;
 
 export default function Home({ customers, transactions }) {
-  const [cardData, setCardData] = useState([
+  const [cardData] = useState([
     {
       title: "Clientes registados",
       content: customers,
