@@ -7,6 +7,8 @@ import Header from "../../components/Header";
 
 import { Box } from "../credit";
 
+import axios from "axios";
+
 export default function Login() {
   const [values, setValues] = useState({
     email: "",
@@ -50,24 +52,45 @@ export default function Login() {
         })
       );
 
-      const request = await fetch(
-        "https://25c2-129-122-186-206.ngrok.io/api/register",
-        {
-          method: "POST",
-          mode: "no-cors",
-          body: {
+      const headers = {
+        "Content-Type": "application/json",
+        mode: "no-cors",
+        "Access-Control-Allow-Origin": "*",
+      };
+
+      axios
+        .post(
+          "https://20f0-129-122-186-206.ngrok.io/api/register",
+          {
             name: values.username,
             email: values.email,
             password: values.password,
           },
-        }
-      ).catch((err) => {
-        console.log("Something went wrong: ", err);
-      });
+          { headers }
+        )
+        .then(function (response) {
+          console.log(response);
+          setDisabled(false);
+        })
+        .catch(function (error) {
+          console.log(error);
+          setDisabled(false);
+        });
 
-      const response = await request;
-      setDisabled(false);
-      console.log(response);
+      // const request = await axios(
+      //   "https://25c2-129-122-186-206.ngrok.io/api/register",
+      //   {
+      //     method: "POST",
+      //     mode: "no-cors",
+      //     body: {
+      //       name: values.username,
+      //       email: values.email,
+      //       password: values.password,
+      //     },
+      //   }
+      // ).catch((err) => {
+      //   console.log("Something went wrong: ", err);
+      // });
     } else {
       alert(
         "As palavra-passe não coincidem, por favor garanta que são iguais."
