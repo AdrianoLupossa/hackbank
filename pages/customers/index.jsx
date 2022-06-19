@@ -1,5 +1,6 @@
 import Head from "next/head";
 
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 
 import Form from "react-bootstrap/Form";
@@ -13,9 +14,19 @@ import { Container } from "../index";
 
 const Filter = styled.div`
   width: 100%;
+  gap: "1rem";
 `;
 
-export default function Clientes() {
+export default function Clientes({ customers }) {
+  const [initialPage, setInitialPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(100);
+
+  const handlePageChange = (e) => {
+    const page = e.target.value;
+    setInitialPage(initialPage + rowsPerPage);
+    setRowsPerPage(rowsPerPage * (page + 1));
+  };
+
   return (
     <div>
       <Head>
@@ -28,7 +39,10 @@ export default function Clientes() {
       </Head>
       <Header />
 
-      <Container className="d-flex flex-column flex-sm-row">
+      <Container
+        style={{ height: "auto" }}
+        className="d-flex flex-column flex-sm-row"
+      >
         <Sidebar active={1} />
         <main className="p-3" style={{ width: "80%" }}>
           <h1>Clientes registados</h1>
@@ -57,9 +71,17 @@ export default function Clientes() {
                 <option value="low-balance">Saldo mais baixo</option>
               </Form.Select>
             </div>
+
+            <Form.Select onChange={handlePageChange} style={{ width: "300px" }}>
+              {customers.slice(0, 100).map((_page, i) => (
+                <option key={i} value={i++}>
+                  Página {i++}
+                </option>
+              ))}
+            </Form.Select>
           </Filter>
 
-          <Table striped bordered hover responsive compressed>
+          <Table striped bordered hover responsive compressed="compressed">
             <thead>
               <tr>
                 <th>#</th>
@@ -75,54 +97,31 @@ export default function Clientes() {
                 <th>Saldo em conta</th>
                 <th>Data do último saldo</th>
                 <th>Salário estimado</th>
+                <th>Saldo após movimento</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td>@fat</td>
-                <td>@fat</td>
-                <td>@fat</td>
-                <td>@fat</td>
-                <td>@fat</td>
-                <td>@fat</td>
-                <td>@fat</td>
-                <td>@fat</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Larry the Bird</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
-              </tr>
+              {customers
+                .slice(initialPage, rowsPerPage)
+                .map((customer, index) => {
+                  return (
+                    <tr key={index}>
+                      <td>{customer.customerid}</td>
+                      <td>{customer.surname}</td>
+                      <td>{customer.creditScore}</td>
+                      <td>{customer.geography}</td>
+                      <td>{customer.gender}</td>
+                      <td>{customer.dateofbirth}</td>
+                      <td>{customer.openaccountdate}</td>
+                      <td>{customer.currentaccountnumber}</td>
+                      <td>{customer.creditcardaccountnumber}</td>
+                      <td>{customer.balance}</td>
+                      <td>{customer.balancedate}</td>
+                      <td>{customer.estimatedsalary}</td>
+                      <td>{customer.currentbalance}</td>
+                    </tr>
+                  );
+                })}
             </tbody>
           </Table>
         </main>
@@ -130,4 +129,19 @@ export default function Clientes() {
       <Footer />
     </div>
   );
+}
+
+export async function getStaticProps() {
+  const request = await fetch(
+    "https://20f0-129-122-186-206.ngrok.io/api/clients"
+  );
+
+  const response = await request.json();
+
+  return {
+    props: {
+      customers: response.data,
+    },
+    revalidate: 3600 * 1000,
+  };
 }

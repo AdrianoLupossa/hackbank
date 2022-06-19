@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Head from "next/head";
 
 import styled from "styled-components";
@@ -45,6 +46,21 @@ export const Container = styled.div`
 `;
 
 export default function Home() {
+  const [cardData, setCardData] = useState({});
+
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch(
+        "https://25c2-129-122-186-206.ngrok.io/api/clients"
+      );
+      const customers = await response.json();
+
+      console.log(customers);
+    }
+
+    getData();
+  }, []);
+
   return (
     <div>
       <Head>

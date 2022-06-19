@@ -90,7 +90,7 @@ export default function Sidebar({ active, style }) {
         </Link>
       </Nav>
 
-      <Link href="/logout">
+      <Link href="/login">
         <MenuItem
           className={`text-decoration-none ${
             active === 4 ? "active" : ""
